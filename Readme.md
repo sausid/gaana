@@ -6,35 +6,35 @@ A Django project for handling location data with CRUD operations.
 
 1. **Clone the Repository:**  
    ```bash
-   git clone <repository_url>
+   git clone git@github.com:sausid/gaana.git
    cd gaana
    ```
 
 2. **Create a Virtual Environment:**  
    ```bash
    python -m venv venv
-   source venv/bin/activate  # For Linux/Mac
-   venv\Scripts\activate    # For Windows
+   source venv/bin/activate
    ```
 
 3. **Install Dependencies:**  
    ```bash
-   pip install django djangorestframework
+   pip install -r requirements.txt
    ```
 
 4. **Apply Migrations:**  
    ```bash
-   python manage.py migrate
+   make migrations
+   make migrate
    ```
 
 5. **Run Initial Data Setup:**  
    ```bash
-   python manage.py initial_setup data.json
+   make initial_setup
    ```
 
 6. **Start the Development Server:**  
    ```bash
-   python manage.py runserver
+   make runserver
    ```
 
 ---
@@ -45,6 +45,10 @@ A Django project for handling location data with CRUD operations.
 - **URL:** `/api/locations/`  
 - **Method:** `GET`  
 - **Response:** Returns a list of all locations.
+- **cURL:** 
+    ```bash
+    curl -X GET http://127.0.0.1:8000/api/locations/
+    ```
 
 ### 2️⃣ **Create a New Location**  
 - **URL:** `/api/locations/`  
@@ -58,11 +62,19 @@ A Django project for handling location data with CRUD operations.
     "code": "52001"
   }
   ```
+- **cURL:** 
+    ```bash
+    curl -X POST http://127.0.0.1:8000/api/locations/ -H "Content-Type: application/json" -d '{"name": "Abu Dhabi", "city": "Abu Dhabi", "country": "UAE", "code": "52001"}'
+    ```
 
 ### 3️⃣ **Retrieve a Single Location**  
 - **URL:** `/api/locations/<id>/`  
 - **Method:** `GET`  
 - **Response:** Returns details of the specific location.
+- **cURL:** 
+    ```bash
+    curl -X GET http://127.0.0.1:8000/api/locations/<id>/
+    ```
 
 ### 4️⃣ **Update a Location**  
 - **URL:** `/api/locations/<id>/`  
@@ -76,18 +88,21 @@ A Django project for handling location data with CRUD operations.
     "code": "52003"
   }
   ```
+- **cURL:** 
+  ```bash
+  curl -X PUT http://127.0.0.1:8000/api/locations/<id>/ -H "Content-Type: application/json" -d '{"name": "Dubai", "city": "Dubai", "country": "UAE", "code": "52003"}'
+  ```
 
 ### 5️⃣ **Delete a Location**  
 - **URL:** `/api/locations/<id>/`  
 - **Method:** `DELETE`
+- **cURL:** 
+  ```bash
+  curl -X DELETE http://127.0.0.1:8000/api/locations/<id>/
+  ```
 
 ---
 
 ## 🔑 Notes
 - Ensure `data.json` is in the project root before running `initial_setup`.
-- Use `make initial_setup` if a `Makefile` is configured.
-
 ---
-
-**Developed with Django & DRF**
-
