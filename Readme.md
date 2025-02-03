@@ -4,10 +4,15 @@ A Django project for handling location data with CRUD operations.
 
 ## 🚀 Project Setup
 
-1. **Clone the Repository:**  
+0. **Clone the Repository:**  
    ```bash
    git clone git@github.com:sausid/gaana.git
    cd gaana
+   ```
+
+1. **Copy the environment file:**  
+   ```bash
+   cp env.example .env
    ```
 
 2. **Create a Virtual Environment:**  
